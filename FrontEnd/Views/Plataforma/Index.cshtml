@@ -1,0 +1,67 @@
+﻿@model FrontEnd.Models.RegistroDocentes
+
+<h1> @ViewBag.titulo</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="@ViewBag.titulo">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" readonly="readonly" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrimerNombre" class="control-label"></label>
+                <input asp-for="PrimerNombre" class="form-control" />
+                <span asp-validation-for="PrimerNombre" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SegundoNombre" class="control-label"></label>
+                <input asp-for="SegundoNombre" class="form-control" />
+                <span asp-validation-for="SegundoNombre" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PrimerApellido" class="control-label"></label>
+                <input asp-for="PrimerApellido" class="form-control" />
+                <span asp-validation-for="PrimerApellido" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SegundoApellido" class="control-label"></label>
+                <select asp-for="SegundoApellido" asp-items="@ViewBag.ListarDocentes"></select>
+                <span asp-validation-for="SegundoApellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Correo" class="control-label"></label>
+                <select asp-for="Correo" asp-items="@ViewBag.ListarDocentes"></select>
+                <span asp-validation-for="Correo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefono" class="control-label"></label>
+                <select asp-for="Telefono" asp-items="@ViewBag.ListarDocentes"></select>
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaNacimiento" class="control-label"></label>
+                <select asp-for="FechaNacimiento" asp-items="@ViewBag.ListarDocentes"></select>
+                <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Grabar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">Retornar</a>
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    @ViewBag.mensaje
+</div>
+<br />
+<br />
+<div>
+    <!--agregar la vista parcial-->
+    @Html.Partial("Listado",(List<RegistroDocentes>)ViewBag.solicitudes)
+</div>
